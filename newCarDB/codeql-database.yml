@@ -1,0 +1,9 @@
+---
+sourceLocationPrefix: "/home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car"
+baselineLinesOfCode: 570097
+unicodeNewlines: false
+columnKind: "utf8"
+primaryLanguage: "cpp"
+creationMetadata:
+  cliVersion: "2.11.0"
+  creationTime: "2023-02-13T03:00:47.919614819Z"

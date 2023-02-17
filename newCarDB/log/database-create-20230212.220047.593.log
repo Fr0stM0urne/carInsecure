@@ -1,0 +1,739 @@
+[2023-02-12 22:00:47] This is codeql database create newCarDB --language=cpp
+[2023-02-12 22:00:47] Log file was started late.
+[2023-02-12 22:00:47] [PROGRESS] database create> Initializing database at /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB.
+[2023-02-12 22:00:47] Running plumbing command: codeql database init --language=cpp --source-root=/home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car --allow-missing-source-root=false --allow-already-existing -- /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB
+[2023-02-12 22:00:47] [PROGRESS] database init> Counting lines of code in /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car
+[2023-02-12 22:00:47] [PROGRESS] database init> Resolving extractor cpp.
+[2023-02-12 22:00:47] Calling plumbing command: codeql resolve languages --format=json
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from /home/frost/Downloads/codeql-bundle-linux64/codeql/.codeqlmanifest.json
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/properties/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/csharp/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/javascript/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/python/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/csv/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/java/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/ruby/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/xml/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/html/codeql-extractor.yml.
+[2023-02-12 22:00:47] [DETAILS] resolve languages> Parsing /home/frost/Downloads/codeql-bundle-linux64/codeql/go/codeql-extractor.yml.
+[2023-02-12 22:00:47] Plumbing command codeql resolve languages completed:
+                      {
+                        "extractors" : {
+                          "properties" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/properties"
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction.",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "cil" : {
+                                  "title" : "Whether to enable CIL extraction.",
+                                  "description" : "A value indicating, whether CIL extraction should be enabled. The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/javascript",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/python"
+                            }
+                          ],
+                          "cpp" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/cpp"
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/csv"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis.\n",
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/ruby"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/xml"
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/html"
+                            }
+                          ],
+                          "go" : [
+                            {
+                              "extractor_root" : "/home/frost/Downloads/codeql-bundle-linux64/codeql/go"
+                            }
+                          ]
+                        }
+                      }
+[2023-02-12 22:00:47] [DETAILS] database init> Found candidate extractor root for cpp: /home/frost/Downloads/codeql-bundle-linux64/codeql/cpp.
+[2023-02-12 22:00:47] [PROGRESS] database init> Successfully loaded extractor C/C++ (cpp) from /home/frost/Downloads/codeql-bundle-linux64/codeql/cpp.
+[2023-02-12 22:00:47] [PROGRESS] database init> Created skeleton CodeQL database at /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB. This in-progress database is ready to be populated by an extractor.
+[2023-02-12 22:00:47] Plumbing command codeql database init completed.
+[2023-02-12 22:00:47] Using autobuild script /home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/tools/autobuild.sh.
+[2023-02-12 22:00:47] [DETAILS] database create> Detected autobuild command for C/C++: /home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/tools/autobuild.sh.
+[2023-02-12 22:00:47] [PROGRESS] database create> Running build command: [/home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/tools/autobuild.sh]
+[2023-02-12 22:00:47] Running plumbing command: codeql database trace-command --working-dir=/home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car --index-traceless-dbs --no-db-cluster -- /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB /home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/tools/autobuild.sh
+[2023-02-12 22:00:47] [PROGRESS] database trace-command> Running command in /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car: [/home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/tools/autobuild.sh]
+[2023-02-12 22:00:47] [build-stderr] + TOOLS_DIR=/home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/tools
+[2023-02-12 22:00:47] [build-stderr] + /home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/tools/detect_source_root
+[2023-02-12 22:00:47] [build-stdout] detect_source_root: Using build system found in '.'
+[2023-02-12 22:00:47] [build-stderr] + '[' -L _lgtm_detected_source_root ']'
+[2023-02-12 22:00:47] [build-stderr] ++ readlink _lgtm_detected_source_root
+[2023-02-12 22:00:47] [build-stderr] + cd .
+[2023-02-12 22:00:47] [build-stderr] + export CXXFLAGS=-fpermissive
+[2023-02-12 22:00:47] [build-stderr] + CXXFLAGS=-fpermissive
+[2023-02-12 22:00:47] [build-stderr] + configure_prefix_opt=
+[2023-02-12 22:00:47] [build-stderr] + '[' -f configure.ac ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f configure.in ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f CMakeLists.txt ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f meson.build ']'
+[2023-02-12 22:00:47] [build-stderr] + try_configure
+[2023-02-12 22:00:47] [build-stderr] + build_dir=.
+[2023-02-12 22:00:47] [build-stderr] + root_dir=.
+[2023-02-12 22:00:47] [build-stderr] + grep -q 'AC_MSG_.* configure in a separate.* directory' configure.in configure.ac
+[2023-02-12 22:00:47] [build-stderr] + for configure in configure configure.gnu
+[2023-02-12 22:00:47] [build-stderr] + '[' -x configure ']'
+[2023-02-12 22:00:47] [build-stderr] + for configure in configure configure.gnu
+[2023-02-12 22:00:47] [build-stderr] + '[' -x configure.gnu ']'
+[2023-02-12 22:00:47] [build-stderr] + rm -rf _lgtm_build_dir
+[2023-02-12 22:00:47] [build-stderr] + for bootstrap in bootstrap.sh bootstrap autogen.sh
+[2023-02-12 22:00:47] [build-stderr] + '[' -x bootstrap.sh ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f bootstrap.sh ']'
+[2023-02-12 22:00:47] [build-stderr] + for bootstrap in bootstrap.sh bootstrap autogen.sh
+[2023-02-12 22:00:47] [build-stderr] + '[' -x bootstrap ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f bootstrap ']'
+[2023-02-12 22:00:47] [build-stderr] + for bootstrap in bootstrap.sh bootstrap autogen.sh
+[2023-02-12 22:00:47] [build-stderr] + '[' -x autogen.sh ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f autogen.sh ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f wscript ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f Kbuild ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f configure.ac ']'
+[2023-02-12 22:00:47] [build-stderr] + '[' -f configure.in ']'
+[2023-02-12 22:00:47] [build-stderr] ++ echo './*.pro'
+[2023-02-12 22:00:47] [build-stderr] + '[' './*.pro' '!=' './*.pro' ']'
+[2023-02-12 22:00:47] [build-stderr] + exit 0
+[2023-02-12 22:00:48] [build-stderr] + export VERBOSE=1
+[2023-02-12 22:00:48] [build-stderr] + VERBOSE=1
+[2023-02-12 22:00:48] [build-stderr] + '[' -L _lgtm_detected_source_root ']'
+[2023-02-12 22:00:48] [build-stderr] ++ readlink _lgtm_detected_source_root
+[2023-02-12 22:00:48] [build-stderr] + cd .
+[2023-02-12 22:00:48] [build-stderr] + '[' -d _lgtm_build_dir ']'
+[2023-02-12 22:00:48] [build-stderr] + '[' -f SConstruct ']'
+[2023-02-12 22:00:48] [build-stderr] + '[' -f wscript ']'
+[2023-02-12 22:00:48] [build-stderr] + '[' -f Makefile ']'
+[2023-02-12 22:00:48] [build-stderr] + make
+[2023-02-12 22:00:48] [build-stdout] 'carCompiler'
+[2023-02-12 22:00:48] [build-stdout] python3 gen_secret.py --car-id '69' --secret-file "/home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/mySecretDir"/car_secrets.json --header-file inc/secrets.h
+[2023-02-12 22:00:48] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_TM4C123GH6PM -c -g -D DEBUG -O0 -DTARGET_IS_TM4C123_RB1 -I./inc -I./lib/tivaware -Os -Dgcc -o gcc/uart.o ./src/uart.c
+[2023-02-12 22:00:48] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_TM4C123GH6PM -c -g -D DEBUG -O0 -DTARGET_IS_TM4C123_RB1 -I./inc -I./lib/tivaware -Os -Dgcc -o gcc/board_link.o ./src/board_link.c
+[2023-02-12 22:00:48] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_TM4C123GH6PM -c -g -D DEBUG -O0 -DTARGET_IS_TM4C123_RB1 -I./inc -I./lib/tivaware -Os -Dgcc -o gcc/firmware.o ./src/firmware.c
+[2023-02-12 22:00:48] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_TM4C123GH6PM -c -g -D DEBUG -O0 -DTARGET_IS_TM4C123_RB1 -I./inc -I./lib/tivaware -Os -Dgcc -o gcc/startup_gcc.o ./lib/tivaware/startup_gcc.c
+[2023-02-12 22:00:48] [build-stderr] ./lib/tivaware/startup_gcc.c:138:1: warning: 'NmiSR' defined but not used [-Wunused-function]
+[2023-02-12 22:00:48] [build-stderr]  NmiSR(void)
+[2023-02-12 22:00:48] [build-stderr]  ^
+[2023-02-12 22:00:48] [build-stderr] ./lib/tivaware/startup_gcc.c:156:1: warning: 'FaultISR' defined but not used [-Wunused-function]
+[2023-02-12 22:00:48] [build-stderr]  FaultISR(void)
+[2023-02-12 22:00:48] [build-stderr]  ^
+[2023-02-12 22:00:48] [build-stderr] ./lib/tivaware/startup_gcc.c:174:1: warning: 'IntDefaultHandler' defined but not used [-Wunused-function]
+[2023-02-12 22:00:48] [build-stderr]  IntDefaultHandler(void)
+[2023-02-12 22:00:48] [build-stderr]  ^
+[2023-02-12 22:00:48] [build-stdout] make -C ./lib/tivaware/driverlib
+[2023-02-12 22:00:48] [build-stdout] make[1]: Entering directory '/home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/lib/tivaware/driverlib'
+[2023-02-12 22:00:48] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/adc.o adc.c
+[2023-02-12 22:00:48] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/aes.o aes.c
+[2023-02-12 22:00:48] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/can.o can.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/comp.o comp.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/cpu.o cpu.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/crc.o crc.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/des.o des.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/eeprom.o eeprom.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/emac.o emac.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/epi.o epi.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/flash.o flash.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/fpu.o fpu.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/gpio.o gpio.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/hibernate.o hibernate.c
+[2023-02-12 22:00:49] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/i2c.o i2c.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/interrupt.o interrupt.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/lcd.o lcd.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/mpu.o mpu.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/onewire.o onewire.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/pwm.o pwm.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/qei.o qei.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/shamd5.o shamd5.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/ssi.o ssi.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/sw_crc.o sw_crc.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/sysctl.o sysctl.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/sysexc.o sysexc.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/systick.o systick.c
+[2023-02-12 22:00:50] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/timer.o timer.c
+[2023-02-12 22:00:51] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/uart.o uart.c
+[2023-02-12 22:00:51] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/udma.o udma.c
+[2023-02-12 22:00:51] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/usb.o usb.c
+[2023-02-12 22:00:51] [build-stdout] arm-none-eabi-gcc -mthumb -mcpu=cortex-m4 -ffunction-sections -fdata-sections -MD -std=c99 -Wall -pedantic -DPART_ -c -I.. -Dgcc -o gcc/watchdog.o watchdog.c
+[2023-02-12 22:00:51] [build-stdout] arm-none-eabi-ar -cr gcc/libdriver.a gcc/adc.o gcc/aes.o gcc/can.o gcc/comp.o gcc/cpu.o gcc/crc.o gcc/des.o gcc/eeprom.o gcc/emac.o gcc/epi.o gcc/flash.o gcc/fpu.o gcc/gpio.o gcc/hibernate.o gcc/i2c.o gcc/interrupt.o gcc/lcd.o gcc/mpu.o gcc/onewire.o gcc/pwm.o gcc/qei.o gcc/shamd5.o gcc/ssi.o gcc/sw_crc.o gcc/sysctl.o gcc/sysexc.o gcc/systick.o gcc/timer.o gcc/uart.o gcc/udma.o gcc/usb.o gcc/watchdog.o
+[2023-02-12 22:00:51] [build-stdout] make[1]: Leaving directory '/home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/lib/tivaware/driverlib'
+[2023-02-12 22:00:51] [build-stdout] arm-none-eabi-ld -T ./lib/tivaware/firmware.ld --entry Firmware_Startup --gc-sections -o gcc/firmware.axf gcc/uart.o gcc/board_link.o gcc/firmware.o gcc/startup_gcc.o lib/tivaware/driverlib/gcc/libdriver.a /home/frost/Documents/ectf_2023/gcc-arm-none-eabi-5_4-2016q3-20160926-linux/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/libm.a /home/frost/Documents/ectf_2023/gcc-arm-none-eabi-5_4-2016q3-20160926-linux/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/libc.a /home/frost/Documents/ectf_2023/gcc-arm-none-eabi-5_4-2016q3-20160926-linux/gcc-arm-none-eabi-5_4-2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/libgcc.a
+[2023-02-12 22:00:51] [build-stdout] cp gcc/firmware.bin 'carBinsPath'
+[2023-02-12 22:00:51] [build-stdout] cp gcc/firmware.axf 'elfPath'
+[2023-02-12 22:00:51] [build-stdout] cp "/home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/mySecretDir"/global_secrets.txt 'eepromPath'
+[2023-02-12 22:00:51] [build-stderr] + exit 0
+[2023-02-12 22:00:51] Plumbing command codeql database trace-command completed.
+[2023-02-12 22:00:51] [PROGRESS] database create> Finalizing database at /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB.
+[2023-02-12 22:00:51] Running plumbing command: codeql database finalize --mode=normal --no-db-cluster -- /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB
+[2023-02-12 22:00:51] [PROGRESS] database finalize> Running TRAP import for CodeQL database at /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB...
+[2023-02-12 22:00:51] Running plumbing command: codeql dataset import --dbscheme=/home/frost/Downloads/codeql-bundle-linux64/codeql/cpp/semmlecode.cpp.dbscheme -- /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/trap/cpp
+[2023-02-12 22:00:51] Clearing disk cache since the version file /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp/default/cache/version does not exist
+[2023-02-12 22:00:51] Tuple pool not found. Clearing relations with cached strings
+[2023-02-12 22:00:51] Trimming disk cache at /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp/default/cache in mode brutal.
+[2023-02-12 22:00:51] Sequence stamp origin is -6354415918564612345
+[2023-02-12 22:00:51] Pausing evaluation to hard-clear memory at sequence stamp o+0
+[2023-02-12 22:00:51] Unpausing evaluation
+[2023-02-12 22:00:51] Pausing evaluation to quickly trim disk at sequence stamp o+1
+[2023-02-12 22:00:51] Unpausing evaluation
+[2023-02-12 22:00:51] Pausing evaluation to zealously trim disk at sequence stamp o+2
+[2023-02-12 22:00:51] Unpausing evaluation
+[2023-02-12 22:00:51] Trimming completed (14ms): Purged everything.
+[2023-02-12 22:00:51] Scanning for files in /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/trap/cpp
+[2023-02-12 22:00:51] Grouping TRAPs by link target
+[2023-02-12 22:00:51] Scanning hw_adc.h.f8ac58a9.trap (adc.c.3e62b442_0.trap.tar.br) (1 of 174)
+[2023-02-12 22:00:51] Scanning hw_ints.h.a66efdde.trap (adc.c.3e62b442_0.trap.tar.br) (2 of 174)
+[2023-02-12 22:00:51] Scanning hw_sysctl.h.f690e9f0.trap (adc.c.3e62b442_0.trap.tar.br) (3 of 174)
+[2023-02-12 22:00:51] Scanning adc.h.e32805c1.trap (adc.c.3e62b442_0.trap.tar.br) (4 of 174)
+[2023-02-12 22:00:51] Scanning debug.h.19c908bb.trap (adc.c.3e62b442_0.trap.tar.br) (5 of 174)
+[2023-02-12 22:00:51] Scanning adc.c.3e62b442.trap (adc.c.3e62b442_0.trap.tar.br) (6 of 174)
+[2023-02-12 22:00:51] Scanning hw_aes.h.f8ac58a9.trap (aes.c.bcff2429_0.trap.tar.br) (7 of 174)
+[2023-02-12 22:00:51] Scanning hw_ccm.h.f8ac58a9.trap (aes.c.bcff2429_0.trap.tar.br) (8 of 174)
+[2023-02-12 22:00:51] Scanning aes.h.9d6f0196.trap (aes.c.bcff2429_0.trap.tar.br) (9 of 174)
+[2023-02-12 22:00:51] Scanning aes.c.bcff2429.trap (aes.c.bcff2429_0.trap.tar.br) (10 of 174)
+[2023-02-12 22:00:51] Scanning hw_can.h.f8ac58a9.trap (can.c.04d5f2b7_0.trap.tar.br) (11 of 174)
+[2023-02-12 22:00:51] Scanning can.h.dc05e00a.trap (can.c.04d5f2b7_0.trap.tar.br) (12 of 174)
+[2023-02-12 22:00:51] Scanning can.c.04d5f2b7.trap (can.c.04d5f2b7_0.trap.tar.br) (13 of 174)
+[2023-02-12 22:00:51] Scanning hw_comp.h.f8ac58a9.trap (comp.c.1779c04f_0.trap.tar.br) (14 of 174)
+[2023-02-12 22:00:51] Scanning comp.h.044469b4.trap (comp.c.1779c04f_0.trap.tar.br) (15 of 174)
+[2023-02-12 22:00:51] Scanning comp.c.1779c04f.trap (comp.c.1779c04f_0.trap.tar.br) (16 of 174)
+[2023-02-12 22:00:51] Scanning cpu.h.94ecf016.trap (cpu.c.9b7e6e9a_0.trap.tar.br) (17 of 174)
+[2023-02-12 22:00:51] Scanning cpu.c.9b7e6e9a.trap (cpu.c.9b7e6e9a_0.trap.tar.br) (18 of 174)
+[2023-02-12 22:00:51] Scanning crc.h.8d87150d.trap (crc.c.e3393632_0.trap.tar.br) (19 of 174)
+[2023-02-12 22:00:51] Scanning crc.c.e3393632.trap (crc.c.e3393632_0.trap.tar.br) (20 of 174)
+[2023-02-12 22:00:51] Scanning hw_des.h.f8ac58a9.trap (des.c.5d216b4d_0.trap.tar.br) (21 of 174)
+[2023-02-12 22:00:51] Scanning des.h.f1953a4f.trap (des.c.5d216b4d_0.trap.tar.br) (22 of 174)
+[2023-02-12 22:00:51] Scanning des.c.5d216b4d.trap (des.c.5d216b4d_0.trap.tar.br) (23 of 174)
+[2023-02-12 22:00:51] Scanning hw_eeprom.h.f8ac58a9.trap (eeprom.c.9c73f06b_0.trap.tar.br) (24 of 174)
+[2023-02-12 22:00:51] Scanning hw_flash.h.f8ac58a9.trap (eeprom.c.9c73f06b_0.trap.tar.br) (25 of 174)
+[2023-02-12 22:00:51] Scanning flash.h.27251af2.trap (eeprom.c.9c73f06b_0.trap.tar.br) (26 of 174)
+[2023-02-12 22:00:51] Scanning eeprom.c.9c73f06b.trap (eeprom.c.9c73f06b_0.trap.tar.br) (27 of 174)
+[2023-02-12 22:00:51] Scanning hw_emac.h.f690e9f0.trap (emac.c.6a500ce9_0.trap.tar.br) (28 of 174)
+[2023-02-12 22:00:51] Scanning emac.h.63f69dcc.trap (emac.c.6a500ce9_0.trap.tar.br) (29 of 174)
+[2023-02-12 22:00:51] Scanning sw_crc.h.faaf5f22.trap (emac.c.6a500ce9_0.trap.tar.br) (30 of 174)
+[2023-02-12 22:00:51] Scanning emac.c.6a500ce9.trap (emac.c.6a500ce9_0.trap.tar.br) (31 of 174)
+[2023-02-12 22:00:51] Scanning hw_epi.h.f690e9f0.trap (epi.c.819ff961_0.trap.tar.br) (32 of 174)
+[2023-02-12 22:00:51] Scanning epi.h.3ad5dcaf.trap (epi.c.819ff961_0.trap.tar.br) (33 of 174)
+[2023-02-12 22:00:51] Scanning epi.c.819ff961.trap (epi.c.819ff961_0.trap.tar.br) (34 of 174)
+[2023-02-12 22:00:51] Scanning flash.c.df4bb1f8.trap (flash.c.df4bb1f8_0.trap.tar.br) (35 of 174)
+[2023-02-12 22:00:51] Scanning fpu.c.1fff0001.trap (fpu.c.1fff0001_0.trap.tar.br) (36 of 174)
+[2023-02-12 22:00:51] Scanning hw_gpio.h.f8ac58a9.trap (gpio.c.5b05483d_0.trap.tar.br) (37 of 174)
+[2023-02-12 22:00:51] Scanning gpio.c.5b05483d.trap (gpio.c.5b05483d_0.trap.tar.br) (38 of 174)
+[2023-02-12 22:00:51] Scanning _types.h.52d18116.trap (hibernate.c.84e4f943_0.trap.tar.br) (39 of 174)
+[2023-02-12 22:00:51] Scanning stddef.h.8791b464.trap (hibernate.c.84e4f943_0.trap.tar.br) (40 of 174)
+[2023-02-12 22:00:51] Scanning time.h.baaa9d63.trap (hibernate.c.84e4f943_0.trap.tar.br) (41 of 174)
+[2023-02-12 22:00:51] Scanning types.h.e1e2ec4a.trap (hibernate.c.84e4f943_0.trap.tar.br) (42 of 174)
+[2023-02-12 22:00:51] Scanning types.h.2ce736e1.trap (hibernate.c.84e4f943_0.trap.tar.br) (43 of 174)
+[2023-02-12 22:00:51] Scanning _timespec.h.610739d0.trap (hibernate.c.84e4f943_0.trap.tar.br) (44 of 174)
+[2023-02-12 22:00:51] Scanning timespec.h.aa0e66ac.trap (hibernate.c.84e4f943_0.trap.tar.br) (45 of 174)
+[2023-02-12 22:00:51] Scanning time.h.68c6bda4.trap (hibernate.c.84e4f943_0.trap.tar.br) (46 of 174)
+[2023-02-12 22:00:51] Scanning hw_hibernate.h.f8ac58a9.trap (hibernate.c.84e4f943_0.trap.tar.br) (47 of 174)
+[2023-02-12 22:00:51] Scanning hibernate.h.176cda64.trap (hibernate.c.84e4f943_0.trap.tar.br) (48 of 174)
+[2023-02-12 22:00:51] Scanning hibernate.c.84e4f943.trap (hibernate.c.84e4f943_0.trap.tar.br) (49 of 174)
+[2023-02-12 22:00:51] Scanning hw_i2c.h.f8ac58a9.trap (i2c.c.21bdbe9c_0.trap.tar.br) (50 of 174)
+[2023-02-12 22:00:51] Scanning i2c.h.ce9c0162.trap (i2c.c.21bdbe9c_0.trap.tar.br) (51 of 174)
+[2023-02-12 22:00:51] Scanning i2c.c.21bdbe9c.trap (i2c.c.21bdbe9c_0.trap.tar.br) (52 of 174)
+[2023-02-12 22:00:51] Scanning interrupt.c.739563cc.trap (interrupt.c.739563cc_0.trap.tar.br) (53 of 174)
+[2023-02-12 22:00:52] Scanning hw_lcd.h.f8ac58a9.trap (lcd.c.bdea40e5_0.trap.tar.br) (54 of 174)
+[2023-02-12 22:00:52] Scanning lcd.h.d7f067d9.trap (lcd.c.bdea40e5_0.trap.tar.br) (55 of 174)
+[2023-02-12 22:00:52] Scanning lcd.c.bdea40e5.trap (lcd.c.bdea40e5_0.trap.tar.br) (56 of 174)
+[2023-02-12 22:00:52] Scanning mpu.h.e9d10b54.trap (mpu.c.a4242a44_0.trap.tar.br) (57 of 174)
+[2023-02-12 22:00:52] Scanning mpu.c.a4242a44.trap (mpu.c.a4242a44_0.trap.tar.br) (58 of 174)
+[2023-02-12 22:00:52] Scanning hw_onewire.h.f8ac58a9.trap (onewire.c.91247ebe_0.trap.tar.br) (59 of 174)
+[2023-02-12 22:00:52] Scanning onewire.h.383cefc0.trap (onewire.c.91247ebe_0.trap.tar.br) (60 of 174)
+[2023-02-12 22:00:52] Scanning onewire.c.91247ebe.trap (onewire.c.91247ebe_0.trap.tar.br) (61 of 174)
+[2023-02-12 22:00:52] Scanning hw_pwm.h.f8ac58a9.trap (pwm.c.47efaae0_0.trap.tar.br) (62 of 174)
+[2023-02-12 22:00:52] Scanning pwm.h.20e43c78.trap (pwm.c.47efaae0_0.trap.tar.br) (63 of 174)
+[2023-02-12 22:00:52] Scanning pwm.c.47efaae0.trap (pwm.c.47efaae0_0.trap.tar.br) (64 of 174)
+[2023-02-12 22:00:52] Scanning hw_qei.h.f8ac58a9.trap (qei.c.3f3adf9e_0.trap.tar.br) (65 of 174)
+[2023-02-12 22:00:52] Scanning qei.h.73164d98.trap (qei.c.3f3adf9e_0.trap.tar.br) (66 of 174)
+[2023-02-12 22:00:52] Scanning qei.c.3f3adf9e.trap (qei.c.3f3adf9e_0.trap.tar.br) (67 of 174)
+[2023-02-12 22:00:52] Scanning hw_shamd5.h.f8ac58a9.trap (shamd5.c.3d1b6275_0.trap.tar.br) (68 of 174)
+[2023-02-12 22:00:52] Scanning shamd5.h.41f5c681.trap (shamd5.c.3d1b6275_0.trap.tar.br) (69 of 174)
+[2023-02-12 22:00:52] Scanning shamd5.c.3d1b6275.trap (shamd5.c.3d1b6275_0.trap.tar.br) (70 of 174)
+[2023-02-12 22:00:52] Scanning hw_ssi.h.f8ac58a9.trap (ssi.c.a2858c89_0.trap.tar.br) (71 of 174)
+[2023-02-12 22:00:52] Scanning ssi.h.b4dbb40f.trap (ssi.c.a2858c89_0.trap.tar.br) (72 of 174)
+[2023-02-12 22:00:52] Scanning ssi.c.a2858c89.trap (ssi.c.a2858c89_0.trap.tar.br) (73 of 174)
+[2023-02-12 22:00:52] Scanning sw_crc.c.158a19b0.trap (sw_crc.c.158a19b0_0.trap.tar.br) (74 of 174)
+[2023-02-12 22:00:52] Scanning sysctl.c.6fe5228d.trap (sysctl.c.6fe5228d_0.trap.tar.br) (75 of 174)
+[2023-02-12 22:00:52] Scanning hw_sysexc.h.f8ac58a9.trap (sysexc.c.1e3b4218_0.trap.tar.br) (76 of 174)
+[2023-02-12 22:00:52] Scanning sysexc.c.1e3b4218.trap (sysexc.c.1e3b4218_0.trap.tar.br) (77 of 174)
+[2023-02-12 22:00:52] Scanning systick.h.d783b2dc.trap (systick.c.6d62a398_0.trap.tar.br) (78 of 174)
+[2023-02-12 22:00:52] Scanning systick.c.6d62a398.trap (systick.c.6d62a398_0.trap.tar.br) (79 of 174)
+[2023-02-12 22:00:52] Scanning hw_timer.h.f8ac58a9.trap (timer.c.ea15ee2b_0.trap.tar.br) (80 of 174)
+[2023-02-12 22:00:52] Scanning timer.c.ea15ee2b.trap (timer.c.ea15ee2b_0.trap.tar.br) (81 of 174)
+[2023-02-12 22:00:52] Scanning uart.c.719e80f6.trap (uart.c.719e80f6_0.trap.tar.br) (82 of 174)
+[2023-02-12 22:00:52] Scanning hw_udma.h.f8ac58a9.trap (udma.c.75cb4d1b_0.trap.tar.br) (83 of 174)
+[2023-02-12 22:00:52] Scanning udma.h.53375c1d.trap (udma.c.75cb4d1b_0.trap.tar.br) (84 of 174)
+[2023-02-12 22:00:52] Scanning udma.c.75cb4d1b.trap (udma.c.75cb4d1b_0.trap.tar.br) (85 of 174)
+[2023-02-12 22:00:52] Scanning hw_usb.h.f8ac58a9.trap (usb.c.a04699b8_0.trap.tar.br) (86 of 174)
+[2023-02-12 22:00:52] Scanning usb.h.cd31fd70.trap (usb.c.a04699b8_0.trap.tar.br) (87 of 174)
+[2023-02-12 22:00:52] Scanning usb.c.a04699b8.trap (usb.c.a04699b8_0.trap.tar.br) (88 of 174)
+[2023-02-12 22:00:52] Scanning hw_watchdog.h.f8ac58a9.trap (watchdog.c.65b10fbe_0.trap.tar.br) (89 of 174)
+[2023-02-12 22:00:52] Scanning watchdog.h.a07595f6.trap (watchdog.c.65b10fbe_0.trap.tar.br) (90 of 174)
+[2023-02-12 22:00:52] Scanning watchdog.c.65b10fbe.trap (watchdog.c.65b10fbe_0.trap.tar.br) (91 of 174)
+[2023-02-12 22:00:52] Scanning hw_nvic.h.f8ac58a9.trap (startup_gcc.c.fea02070_0.trap.tar.br) (92 of 174)
+[2023-02-12 22:00:52] Scanning startup_gcc.c.fea02070.trap (startup_gcc.c.fea02070_0.trap.tar.br) (93 of 174)
+[2023-02-12 22:00:52] Scanning board_link.h.413bc64c.trap (board_link.c.721011d5_0.trap.tar.br) (94 of 174)
+[2023-02-12 22:00:52] Scanning board_link.c.721011d5.trap (board_link.c.721011d5_0.trap.tar.br) (95 of 174)
+[2023-02-12 22:00:52] Scanning hw_ints.h.e98ad4bd.trap (firmware.c.c1b28f21_0.trap.tar.br) (96 of 174)
+[2023-02-12 22:00:52] Scanning eeprom.h.f1027ce8.trap (firmware.c.c1b28f21_0.trap.tar.br) (97 of 174)
+[2023-02-12 22:00:52] Scanning interrupt.h.a94116ad.trap (firmware.c.c1b28f21_0.trap.tar.br) (98 of 174)
+[2023-02-12 22:00:52] Scanning timer.h.60feb5e6.trap (firmware.c.c1b28f21_0.trap.tar.br) (99 of 174)
+[2023-02-12 22:00:52] Scanning secrets.h.f8ac58a9.trap (firmware.c.c1b28f21_0.trap.tar.br) (100 of 174)
+[2023-02-12 22:00:52] Scanning feature_list.h.e2d0090f.trap (firmware.c.c1b28f21_0.trap.tar.br) (101 of 174)
+[2023-02-12 22:00:52] Scanning firmware.c.c1b28f21.trap (firmware.c.c1b28f21_0.trap.tar.br) (102 of 174)
+[2023-02-12 22:00:52] Scanning cpp_predefined.5653aa5f.trap (uart.c.cdc3c2bf_0.trap.tar.br) (103 of 174)
+[2023-02-12 22:00:52] Scanning stdbool.h.f690e9f0.trap (uart.c.cdc3c2bf_0.trap.tar.br) (104 of 174)
+[2023-02-12 22:00:52] Scanning _newlib_version.h.f8ac58a9.trap (uart.c.cdc3c2bf_0.trap.tar.br) (105 of 174)
+[2023-02-12 22:00:52] Scanning features.h.c7db532b.trap (uart.c.cdc3c2bf_0.trap.tar.br) (106 of 174)
+[2023-02-12 22:00:52] Scanning _default_types.h.b978223c.trap (uart.c.cdc3c2bf_0.trap.tar.br) (107 of 174)
+[2023-02-12 22:00:52] Scanning _intsup.h.3652d85a.trap (uart.c.cdc3c2bf_0.trap.tar.br) (108 of 174)
+[2023-02-12 22:00:52] Scanning _stdint.h.1bb1463c.trap (uart.c.cdc3c2bf_0.trap.tar.br) (109 of 174)
+[2023-02-12 22:00:52] Scanning stdint.h.18bf36af.trap (uart.c.cdc3c2bf_0.trap.tar.br) (110 of 174)
+[2023-02-12 22:00:52] Scanning stdint.h.3905b802.trap (uart.c.cdc3c2bf_0.trap.tar.br) (111 of 174)
+[2023-02-12 22:00:52] Scanning newlib.h.28ef6dd5.trap (uart.c.cdc3c2bf_0.trap.tar.br) (112 of 174)
+[2023-02-12 22:00:52] Scanning ieeefp.h.471957b7.trap (uart.c.cdc3c2bf_0.trap.tar.br) (113 of 174)
+[2023-02-12 22:00:52] Scanning config.h.53615f7e.trap (uart.c.cdc3c2bf_0.trap.tar.br) (114 of 174)
+[2023-02-12 22:00:52] Scanning _ansi.h.06573499.trap (uart.c.cdc3c2bf_0.trap.tar.br) (115 of 174)
+[2023-02-12 22:00:52] Scanning stddef.h.7c48152c.trap (uart.c.cdc3c2bf_0.trap.tar.br) (116 of 174)
+[2023-02-12 22:00:52] Scanning _types.h.a690f598.trap (uart.c.cdc3c2bf_0.trap.tar.br) (117 of 174)
+[2023-02-12 22:00:52] Scanning lock.h.f29b9e62.trap (uart.c.cdc3c2bf_0.trap.tar.br) (118 of 174)
+[2023-02-12 22:00:52] Scanning stddef.h.d732bac6.trap (uart.c.cdc3c2bf_0.trap.tar.br) (119 of 174)
+[2023-02-12 22:00:52] Scanning _types.h.b0571b87.trap (uart.c.cdc3c2bf_0.trap.tar.br) (120 of 174)
+[2023-02-12 22:00:52] Scanning reent.h.7e67b36f.trap (uart.c.cdc3c2bf_0.trap.tar.br) (121 of 174)
+[2023-02-12 22:00:52] Scanning stddef.h.e2f41a05.trap (uart.c.cdc3c2bf_0.trap.tar.br) (122 of 174)
+[2023-02-12 22:00:52] Scanning cdefs.h.7783221b.trap (uart.c.cdc3c2bf_0.trap.tar.br) (123 of 174)
+[2023-02-12 22:00:52] Scanning stddef.h.9cc5c36a.trap (uart.c.cdc3c2bf_0.trap.tar.br) (124 of 174)
+[2023-02-12 22:00:52] Scanning string.h.891737e2.trap (uart.c.cdc3c2bf_0.trap.tar.br) (125 of 174)
+[2023-02-12 22:00:52] Scanning string.h.3ab418b3.trap (uart.c.cdc3c2bf_0.trap.tar.br) (126 of 174)
+[2023-02-12 22:00:52] Scanning fpu.h.55e5b4b6.trap (uart.c.cdc3c2bf_0.trap.tar.br) (127 of 174)
+[2023-02-12 22:00:52] Scanning gpio.h.013b7ff6.trap (uart.c.cdc3c2bf_0.trap.tar.br) (128 of 174)
+[2023-02-12 22:00:52] Scanning pin_map.h.af3ed268.trap (uart.c.cdc3c2bf_0.trap.tar.br) (129 of 174)
+[2023-02-12 22:00:52] Scanning sysctl.h.d73b590c.trap (uart.c.cdc3c2bf_0.trap.tar.br) (130 of 174)
+[2023-02-12 22:00:52] Scanning uart.h.fc8bc20f.trap (uart.c.cdc3c2bf_0.trap.tar.br) (131 of 174)
+[2023-02-12 22:00:52] Scanning hw_memmap.h.f8ac58a9.trap (uart.c.cdc3c2bf_0.trap.tar.br) (132 of 174)
+[2023-02-12 22:00:52] Scanning hw_types.h.65ab703c.trap (uart.c.cdc3c2bf_0.trap.tar.br) (133 of 174)
+[2023-02-12 22:00:52] Scanning hw_uart.h.f8ac58a9.trap (uart.c.cdc3c2bf_0.trap.tar.br) (134 of 174)
+[2023-02-12 22:00:52] Scanning uart.h.0638084b.trap (uart.c.cdc3c2bf_0.trap.tar.br) (135 of 174)
+[2023-02-12 22:00:52] Scanning uart.c.cdc3c2bf.trap (uart.c.cdc3c2bf_0.trap.tar.br) (136 of 174)
+[2023-02-12 22:00:52] Scanning 50924782_0.trap.br (137 of 174)
+[2023-02-12 22:00:52] Scanning 13203468_0.trap.br (138 of 174)
+[2023-02-12 22:00:52] Scanning 57079282_0.trap.br (139 of 174)
+[2023-02-12 22:00:52] Scanning 12255210_0.trap.br (140 of 174)
+[2023-02-12 22:00:52] Scanning 31098482_0.trap.br (141 of 174)
+[2023-02-12 22:00:52] Scanning 16798664_0.trap.br (142 of 174)
+[2023-02-12 22:00:52] Scanning 23968896_0.trap.br (143 of 174)
+[2023-02-12 22:00:52] Scanning 3781304_0.trap.br (144 of 174)
+[2023-02-12 22:00:52] Scanning 32400421_0.trap.br (145 of 174)
+[2023-02-12 22:00:52] Scanning 6254912_0.trap.br (146 of 174)
+[2023-02-12 22:00:52] Scanning 30876227_0.trap.br (147 of 174)
+[2023-02-12 22:00:52] Scanning 53132531_0.trap.br (148 of 174)
+[2023-02-12 22:00:52] Scanning 64648775_0.trap.br (149 of 174)
+[2023-02-12 22:00:52] Scanning 50062063_0.trap.br (150 of 174)
+[2023-02-12 22:00:52] Scanning 22444928_0.trap.br (151 of 174)
+[2023-02-12 22:00:52] Scanning 7314160_0.trap.br (152 of 174)
+[2023-02-12 22:00:52] Scanning 353252_0.trap.br (153 of 174)
+[2023-02-12 22:00:52] Scanning 19002753_0.trap.br (154 of 174)
+[2023-02-12 22:00:52] Scanning 13897497_0.trap.br (155 of 174)
+[2023-02-12 22:00:52] Scanning 14740814_0.trap.br (156 of 174)
+[2023-02-12 22:00:52] Scanning 37905303_0.trap.br (157 of 174)
+[2023-02-12 22:00:52] Scanning 25630589_0.trap.br (158 of 174)
+[2023-02-12 22:00:52] Scanning 9699167_0.trap.br (159 of 174)
+[2023-02-12 22:00:52] Scanning 1094157_0.trap.br (160 of 174)
+[2023-02-12 22:00:52] Scanning 1486715_0.trap.br (161 of 174)
+[2023-02-12 22:00:52] Scanning 39553170_0.trap.br (162 of 174)
+[2023-02-12 22:00:52] Scanning 40126069_0.trap.br (163 of 174)
+[2023-02-12 22:00:52] Scanning 47513388_0.trap.br (164 of 174)
+[2023-02-12 22:00:52] Scanning 39301758_0.trap.br (165 of 174)
+[2023-02-12 22:00:52] Scanning 65707511_0.trap.br (166 of 174)
+[2023-02-12 22:00:52] Scanning 38907656_0.trap.br (167 of 174)
+[2023-02-12 22:00:52] Scanning 27371368_0.trap.br (168 of 174)
+[2023-02-12 22:00:52] Scanning 34447578_0.trap.br (169 of 174)
+[2023-02-12 22:00:52] Scanning 56209122_0.trap.br (170 of 174)
+[2023-02-12 22:00:52] Scanning 29746678_0.trap.br (171 of 174)
+[2023-02-12 22:00:52] Scanning 55940110_0.trap.br (172 of 174)
+[2023-02-12 22:00:52] Scanning firmware.axf.trap.br (173 of 174)
+[2023-02-12 22:00:52] Scanning sourceLocationPrefix.trap.gz (174 of 174)
+[2023-02-12 22:00:52] Assembling firmware.axf.link with 172 files (1 of 2)
+[2023-02-12 22:00:52] Assembling no link target with 2 files (2 of 2)
+[2023-02-12 22:00:52] Importing hw_adc.h.f8ac58a9.trap (adc.c.3e62b442_0.trap.tar.br) for firmware.axf.link (1 of 174)
+[2023-02-12 22:00:52] Importing hw_ints.h.a66efdde.trap (adc.c.3e62b442_0.trap.tar.br) for firmware.axf.link (2 of 174)
+[2023-02-12 22:00:52] Importing hw_sysctl.h.f690e9f0.trap (adc.c.3e62b442_0.trap.tar.br) for firmware.axf.link (3 of 174)
+[2023-02-12 22:00:52] Importing adc.h.e32805c1.trap (adc.c.3e62b442_0.trap.tar.br) for firmware.axf.link (4 of 174)
+[2023-02-12 22:00:52] Importing debug.h.19c908bb.trap (adc.c.3e62b442_0.trap.tar.br) for firmware.axf.link (5 of 174)
+[2023-02-12 22:00:52] Importing adc.c.3e62b442.trap (adc.c.3e62b442_0.trap.tar.br) for firmware.axf.link (6 of 174)
+[2023-02-12 22:00:52] Importing hw_aes.h.f8ac58a9.trap (aes.c.bcff2429_0.trap.tar.br) for firmware.axf.link (7 of 174)
+[2023-02-12 22:00:52] Importing hw_ccm.h.f8ac58a9.trap (aes.c.bcff2429_0.trap.tar.br) for firmware.axf.link (8 of 174)
+[2023-02-12 22:00:52] Importing aes.h.9d6f0196.trap (aes.c.bcff2429_0.trap.tar.br) for firmware.axf.link (9 of 174)
+[2023-02-12 22:00:52] Importing aes.c.bcff2429.trap (aes.c.bcff2429_0.trap.tar.br) for firmware.axf.link (10 of 174)
+[2023-02-12 22:00:52] Importing hw_can.h.f8ac58a9.trap (can.c.04d5f2b7_0.trap.tar.br) for firmware.axf.link (11 of 174)
+[2023-02-12 22:00:52] Importing can.h.dc05e00a.trap (can.c.04d5f2b7_0.trap.tar.br) for firmware.axf.link (12 of 174)
+[2023-02-12 22:00:52] Importing can.c.04d5f2b7.trap (can.c.04d5f2b7_0.trap.tar.br) for firmware.axf.link (13 of 174)
+[2023-02-12 22:00:52] Importing hw_comp.h.f8ac58a9.trap (comp.c.1779c04f_0.trap.tar.br) for firmware.axf.link (14 of 174)
+[2023-02-12 22:00:52] Importing comp.h.044469b4.trap (comp.c.1779c04f_0.trap.tar.br) for firmware.axf.link (15 of 174)
+[2023-02-12 22:00:52] Importing comp.c.1779c04f.trap (comp.c.1779c04f_0.trap.tar.br) for firmware.axf.link (16 of 174)
+[2023-02-12 22:00:52] Importing cpu.h.94ecf016.trap (cpu.c.9b7e6e9a_0.trap.tar.br) for firmware.axf.link (17 of 174)
+[2023-02-12 22:00:52] Importing cpu.c.9b7e6e9a.trap (cpu.c.9b7e6e9a_0.trap.tar.br) for firmware.axf.link (18 of 174)
+[2023-02-12 22:00:52] Importing crc.h.8d87150d.trap (crc.c.e3393632_0.trap.tar.br) for firmware.axf.link (19 of 174)
+[2023-02-12 22:00:52] Importing crc.c.e3393632.trap (crc.c.e3393632_0.trap.tar.br) for firmware.axf.link (20 of 174)
+[2023-02-12 22:00:52] Importing hw_des.h.f8ac58a9.trap (des.c.5d216b4d_0.trap.tar.br) for firmware.axf.link (21 of 174)
+[2023-02-12 22:00:52] Importing des.h.f1953a4f.trap (des.c.5d216b4d_0.trap.tar.br) for firmware.axf.link (22 of 174)
+[2023-02-12 22:00:52] Importing des.c.5d216b4d.trap (des.c.5d216b4d_0.trap.tar.br) for firmware.axf.link (23 of 174)
+[2023-02-12 22:00:52] Importing hw_eeprom.h.f8ac58a9.trap (eeprom.c.9c73f06b_0.trap.tar.br) for firmware.axf.link (24 of 174)
+[2023-02-12 22:00:52] Importing hw_flash.h.f8ac58a9.trap (eeprom.c.9c73f06b_0.trap.tar.br) for firmware.axf.link (25 of 174)
+[2023-02-12 22:00:52] Importing flash.h.27251af2.trap (eeprom.c.9c73f06b_0.trap.tar.br) for firmware.axf.link (26 of 174)
+[2023-02-12 22:00:52] Importing eeprom.c.9c73f06b.trap (eeprom.c.9c73f06b_0.trap.tar.br) for firmware.axf.link (27 of 174)
+[2023-02-12 22:00:52] Importing hw_emac.h.f690e9f0.trap (emac.c.6a500ce9_0.trap.tar.br) for firmware.axf.link (28 of 174)
+[2023-02-12 22:00:52] Importing emac.h.63f69dcc.trap (emac.c.6a500ce9_0.trap.tar.br) for firmware.axf.link (29 of 174)
+[2023-02-12 22:00:52] Importing sw_crc.h.faaf5f22.trap (emac.c.6a500ce9_0.trap.tar.br) for firmware.axf.link (30 of 174)
+[2023-02-12 22:00:52] Importing emac.c.6a500ce9.trap (emac.c.6a500ce9_0.trap.tar.br) for firmware.axf.link (31 of 174)
+[2023-02-12 22:00:52] Importing hw_epi.h.f690e9f0.trap (epi.c.819ff961_0.trap.tar.br) for firmware.axf.link (32 of 174)
+[2023-02-12 22:00:52] Importing epi.h.3ad5dcaf.trap (epi.c.819ff961_0.trap.tar.br) for firmware.axf.link (33 of 174)
+[2023-02-12 22:00:52] Importing epi.c.819ff961.trap (epi.c.819ff961_0.trap.tar.br) for firmware.axf.link (34 of 174)
+[2023-02-12 22:00:52] Importing flash.c.df4bb1f8.trap (flash.c.df4bb1f8_0.trap.tar.br) for firmware.axf.link (35 of 174)
+[2023-02-12 22:00:52] Importing fpu.c.1fff0001.trap (fpu.c.1fff0001_0.trap.tar.br) for firmware.axf.link (36 of 174)
+[2023-02-12 22:00:52] Importing hw_gpio.h.f8ac58a9.trap (gpio.c.5b05483d_0.trap.tar.br) for firmware.axf.link (37 of 174)
+[2023-02-12 22:00:52] Importing gpio.c.5b05483d.trap (gpio.c.5b05483d_0.trap.tar.br) for firmware.axf.link (38 of 174)
+[2023-02-12 22:00:52] Importing _types.h.52d18116.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (39 of 174)
+[2023-02-12 22:00:52] Importing stddef.h.8791b464.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (40 of 174)
+[2023-02-12 22:00:52] Importing time.h.baaa9d63.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (41 of 174)
+[2023-02-12 22:00:52] Importing types.h.e1e2ec4a.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (42 of 174)
+[2023-02-12 22:00:52] Importing types.h.2ce736e1.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (43 of 174)
+[2023-02-12 22:00:52] Importing _timespec.h.610739d0.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (44 of 174)
+[2023-02-12 22:00:52] Importing timespec.h.aa0e66ac.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (45 of 174)
+[2023-02-12 22:00:52] Importing time.h.68c6bda4.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (46 of 174)
+[2023-02-12 22:00:52] Importing hw_hibernate.h.f8ac58a9.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (47 of 174)
+[2023-02-12 22:00:52] Importing hibernate.h.176cda64.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (48 of 174)
+[2023-02-12 22:00:52] Importing hibernate.c.84e4f943.trap (hibernate.c.84e4f943_0.trap.tar.br) for firmware.axf.link (49 of 174)
+[2023-02-12 22:00:52] Importing hw_i2c.h.f8ac58a9.trap (i2c.c.21bdbe9c_0.trap.tar.br) for firmware.axf.link (50 of 174)
+[2023-02-12 22:00:52] Importing i2c.h.ce9c0162.trap (i2c.c.21bdbe9c_0.trap.tar.br) for firmware.axf.link (51 of 174)
+[2023-02-12 22:00:53] Importing i2c.c.21bdbe9c.trap (i2c.c.21bdbe9c_0.trap.tar.br) for firmware.axf.link (52 of 174)
+[2023-02-12 22:00:53] Importing interrupt.c.739563cc.trap (interrupt.c.739563cc_0.trap.tar.br) for firmware.axf.link (53 of 174)
+[2023-02-12 22:00:53] Importing hw_lcd.h.f8ac58a9.trap (lcd.c.bdea40e5_0.trap.tar.br) for firmware.axf.link (54 of 174)
+[2023-02-12 22:00:53] Importing lcd.h.d7f067d9.trap (lcd.c.bdea40e5_0.trap.tar.br) for firmware.axf.link (55 of 174)
+[2023-02-12 22:00:53] Importing lcd.c.bdea40e5.trap (lcd.c.bdea40e5_0.trap.tar.br) for firmware.axf.link (56 of 174)
+[2023-02-12 22:00:53] Importing mpu.h.e9d10b54.trap (mpu.c.a4242a44_0.trap.tar.br) for firmware.axf.link (57 of 174)
+[2023-02-12 22:00:53] Importing mpu.c.a4242a44.trap (mpu.c.a4242a44_0.trap.tar.br) for firmware.axf.link (58 of 174)
+[2023-02-12 22:00:53] Importing hw_onewire.h.f8ac58a9.trap (onewire.c.91247ebe_0.trap.tar.br) for firmware.axf.link (59 of 174)
+[2023-02-12 22:00:53] Importing onewire.h.383cefc0.trap (onewire.c.91247ebe_0.trap.tar.br) for firmware.axf.link (60 of 174)
+[2023-02-12 22:00:53] Importing onewire.c.91247ebe.trap (onewire.c.91247ebe_0.trap.tar.br) for firmware.axf.link (61 of 174)
+[2023-02-12 22:00:53] Importing hw_pwm.h.f8ac58a9.trap (pwm.c.47efaae0_0.trap.tar.br) for firmware.axf.link (62 of 174)
+[2023-02-12 22:00:53] Importing pwm.h.20e43c78.trap (pwm.c.47efaae0_0.trap.tar.br) for firmware.axf.link (63 of 174)
+[2023-02-12 22:00:53] Importing pwm.c.47efaae0.trap (pwm.c.47efaae0_0.trap.tar.br) for firmware.axf.link (64 of 174)
+[2023-02-12 22:00:53] Importing hw_qei.h.f8ac58a9.trap (qei.c.3f3adf9e_0.trap.tar.br) for firmware.axf.link (65 of 174)
+[2023-02-12 22:00:53] Importing qei.h.73164d98.trap (qei.c.3f3adf9e_0.trap.tar.br) for firmware.axf.link (66 of 174)
+[2023-02-12 22:00:53] Importing qei.c.3f3adf9e.trap (qei.c.3f3adf9e_0.trap.tar.br) for firmware.axf.link (67 of 174)
+[2023-02-12 22:00:53] Importing hw_shamd5.h.f8ac58a9.trap (shamd5.c.3d1b6275_0.trap.tar.br) for firmware.axf.link (68 of 174)
+[2023-02-12 22:00:53] Importing shamd5.h.41f5c681.trap (shamd5.c.3d1b6275_0.trap.tar.br) for firmware.axf.link (69 of 174)
+[2023-02-12 22:00:53] Importing shamd5.c.3d1b6275.trap (shamd5.c.3d1b6275_0.trap.tar.br) for firmware.axf.link (70 of 174)
+[2023-02-12 22:00:53] Importing hw_ssi.h.f8ac58a9.trap (ssi.c.a2858c89_0.trap.tar.br) for firmware.axf.link (71 of 174)
+[2023-02-12 22:00:53] Importing ssi.h.b4dbb40f.trap (ssi.c.a2858c89_0.trap.tar.br) for firmware.axf.link (72 of 174)
+[2023-02-12 22:00:53] Importing ssi.c.a2858c89.trap (ssi.c.a2858c89_0.trap.tar.br) for firmware.axf.link (73 of 174)
+[2023-02-12 22:00:53] Importing sw_crc.c.158a19b0.trap (sw_crc.c.158a19b0_0.trap.tar.br) for firmware.axf.link (74 of 174)
+[2023-02-12 22:00:53] Importing sysctl.c.6fe5228d.trap (sysctl.c.6fe5228d_0.trap.tar.br) for firmware.axf.link (75 of 174)
+[2023-02-12 22:00:53] Importing hw_sysexc.h.f8ac58a9.trap (sysexc.c.1e3b4218_0.trap.tar.br) for firmware.axf.link (76 of 174)
+[2023-02-12 22:00:53] Importing sysexc.c.1e3b4218.trap (sysexc.c.1e3b4218_0.trap.tar.br) for firmware.axf.link (77 of 174)
+[2023-02-12 22:00:53] Importing systick.h.d783b2dc.trap (systick.c.6d62a398_0.trap.tar.br) for firmware.axf.link (78 of 174)
+[2023-02-12 22:00:53] Importing systick.c.6d62a398.trap (systick.c.6d62a398_0.trap.tar.br) for firmware.axf.link (79 of 174)
+[2023-02-12 22:00:53] Importing hw_timer.h.f8ac58a9.trap (timer.c.ea15ee2b_0.trap.tar.br) for firmware.axf.link (80 of 174)
+[2023-02-12 22:00:53] Importing timer.c.ea15ee2b.trap (timer.c.ea15ee2b_0.trap.tar.br) for firmware.axf.link (81 of 174)
+[2023-02-12 22:00:53] Importing uart.c.719e80f6.trap (uart.c.719e80f6_0.trap.tar.br) for firmware.axf.link (82 of 174)
+[2023-02-12 22:00:53] Importing hw_udma.h.f8ac58a9.trap (udma.c.75cb4d1b_0.trap.tar.br) for firmware.axf.link (83 of 174)
+[2023-02-12 22:00:53] Importing udma.h.53375c1d.trap (udma.c.75cb4d1b_0.trap.tar.br) for firmware.axf.link (84 of 174)
+[2023-02-12 22:00:53] Importing udma.c.75cb4d1b.trap (udma.c.75cb4d1b_0.trap.tar.br) for firmware.axf.link (85 of 174)
+[2023-02-12 22:00:53] Importing hw_usb.h.f8ac58a9.trap (usb.c.a04699b8_0.trap.tar.br) for firmware.axf.link (86 of 174)
+[2023-02-12 22:00:53] Importing usb.h.cd31fd70.trap (usb.c.a04699b8_0.trap.tar.br) for firmware.axf.link (87 of 174)
+[2023-02-12 22:00:53] Importing usb.c.a04699b8.trap (usb.c.a04699b8_0.trap.tar.br) for firmware.axf.link (88 of 174)
+[2023-02-12 22:00:53] Importing hw_watchdog.h.f8ac58a9.trap (watchdog.c.65b10fbe_0.trap.tar.br) for firmware.axf.link (89 of 174)
+[2023-02-12 22:00:53] Importing watchdog.h.a07595f6.trap (watchdog.c.65b10fbe_0.trap.tar.br) for firmware.axf.link (90 of 174)
+[2023-02-12 22:00:53] Importing watchdog.c.65b10fbe.trap (watchdog.c.65b10fbe_0.trap.tar.br) for firmware.axf.link (91 of 174)
+[2023-02-12 22:00:53] Importing hw_nvic.h.f8ac58a9.trap (startup_gcc.c.fea02070_0.trap.tar.br) for firmware.axf.link (92 of 174)
+[2023-02-12 22:00:53] Importing startup_gcc.c.fea02070.trap (startup_gcc.c.fea02070_0.trap.tar.br) for firmware.axf.link (93 of 174)
+[2023-02-12 22:00:53] Importing board_link.h.413bc64c.trap (board_link.c.721011d5_0.trap.tar.br) for firmware.axf.link (94 of 174)
+[2023-02-12 22:00:53] Importing board_link.c.721011d5.trap (board_link.c.721011d5_0.trap.tar.br) for firmware.axf.link (95 of 174)
+[2023-02-12 22:00:53] Importing hw_ints.h.e98ad4bd.trap (firmware.c.c1b28f21_0.trap.tar.br) for firmware.axf.link (96 of 174)
+[2023-02-12 22:00:53] Importing eeprom.h.f1027ce8.trap (firmware.c.c1b28f21_0.trap.tar.br) for firmware.axf.link (97 of 174)
+[2023-02-12 22:00:53] Importing interrupt.h.a94116ad.trap (firmware.c.c1b28f21_0.trap.tar.br) for firmware.axf.link (98 of 174)
+[2023-02-12 22:00:53] Importing timer.h.60feb5e6.trap (firmware.c.c1b28f21_0.trap.tar.br) for firmware.axf.link (99 of 174)
+[2023-02-12 22:00:53] Importing secrets.h.f8ac58a9.trap (firmware.c.c1b28f21_0.trap.tar.br) for firmware.axf.link (100 of 174)
+[2023-02-12 22:00:53] Importing feature_list.h.e2d0090f.trap (firmware.c.c1b28f21_0.trap.tar.br) for firmware.axf.link (101 of 174)
+[2023-02-12 22:00:53] Importing firmware.c.c1b28f21.trap (firmware.c.c1b28f21_0.trap.tar.br) for firmware.axf.link (102 of 174)
+[2023-02-12 22:00:53] Importing cpp_predefined.5653aa5f.trap (uart.c.cdc3c2bf_0.trap.tar.br) for no link target (103 of 174)
+[2023-02-12 22:00:53] Importing stdbool.h.f690e9f0.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (104 of 174)
+[2023-02-12 22:00:53] Importing _newlib_version.h.f8ac58a9.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (105 of 174)
+[2023-02-12 22:00:53] Importing features.h.c7db532b.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (106 of 174)
+[2023-02-12 22:00:53] Importing _default_types.h.b978223c.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (107 of 174)
+[2023-02-12 22:00:53] Importing _intsup.h.3652d85a.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (108 of 174)
+[2023-02-12 22:00:53] Importing _stdint.h.1bb1463c.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (109 of 174)
+[2023-02-12 22:00:53] Importing stdint.h.18bf36af.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (110 of 174)
+[2023-02-12 22:00:53] Importing stdint.h.3905b802.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (111 of 174)
+[2023-02-12 22:00:53] Importing newlib.h.28ef6dd5.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (112 of 174)
+[2023-02-12 22:00:53] Importing ieeefp.h.471957b7.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (113 of 174)
+[2023-02-12 22:00:53] Importing config.h.53615f7e.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (114 of 174)
+[2023-02-12 22:00:53] Importing _ansi.h.06573499.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (115 of 174)
+[2023-02-12 22:00:53] Importing stddef.h.7c48152c.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (116 of 174)
+[2023-02-12 22:00:53] Importing _types.h.a690f598.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (117 of 174)
+[2023-02-12 22:00:53] Importing lock.h.f29b9e62.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (118 of 174)
+[2023-02-12 22:00:53] Importing stddef.h.d732bac6.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (119 of 174)
+[2023-02-12 22:00:53] Importing _types.h.b0571b87.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (120 of 174)
+[2023-02-12 22:00:53] Importing reent.h.7e67b36f.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (121 of 174)
+[2023-02-12 22:00:53] Importing stddef.h.e2f41a05.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (122 of 174)
+[2023-02-12 22:00:53] Importing cdefs.h.7783221b.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (123 of 174)
+[2023-02-12 22:00:53] Importing stddef.h.9cc5c36a.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (124 of 174)
+[2023-02-12 22:00:53] Importing string.h.891737e2.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (125 of 174)
+[2023-02-12 22:00:53] Importing string.h.3ab418b3.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (126 of 174)
+[2023-02-12 22:00:53] Importing fpu.h.55e5b4b6.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (127 of 174)
+[2023-02-12 22:00:53] Importing gpio.h.013b7ff6.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (128 of 174)
+[2023-02-12 22:00:53] Importing pin_map.h.af3ed268.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (129 of 174)
+[2023-02-12 22:00:53] Importing sysctl.h.d73b590c.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (130 of 174)
+[2023-02-12 22:00:53] Importing uart.h.fc8bc20f.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (131 of 174)
+[2023-02-12 22:00:53] Importing hw_memmap.h.f8ac58a9.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (132 of 174)
+[2023-02-12 22:00:53] Importing hw_types.h.65ab703c.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (133 of 174)
+[2023-02-12 22:00:53] Importing hw_uart.h.f8ac58a9.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (134 of 174)
+[2023-02-12 22:00:53] Importing uart.h.0638084b.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (135 of 174)
+[2023-02-12 22:00:53] Importing uart.c.cdc3c2bf.trap (uart.c.cdc3c2bf_0.trap.tar.br) for firmware.axf.link (136 of 174)
+[2023-02-12 22:00:53] Importing 50924782_0.trap.br for firmware.axf.link (137 of 174)
+[2023-02-12 22:00:53] Importing 13203468_0.trap.br for firmware.axf.link (138 of 174)
+[2023-02-12 22:00:53] Importing 57079282_0.trap.br for firmware.axf.link (139 of 174)
+[2023-02-12 22:00:53] Importing 12255210_0.trap.br for firmware.axf.link (140 of 174)
+[2023-02-12 22:00:53] Importing 31098482_0.trap.br for firmware.axf.link (141 of 174)
+[2023-02-12 22:00:53] Importing 16798664_0.trap.br for firmware.axf.link (142 of 174)
+[2023-02-12 22:00:53] Importing 23968896_0.trap.br for firmware.axf.link (143 of 174)
+[2023-02-12 22:00:53] Importing 3781304_0.trap.br for firmware.axf.link (144 of 174)
+[2023-02-12 22:00:53] Importing 32400421_0.trap.br for firmware.axf.link (145 of 174)
+[2023-02-12 22:00:53] Importing 6254912_0.trap.br for firmware.axf.link (146 of 174)
+[2023-02-12 22:00:53] Importing 30876227_0.trap.br for firmware.axf.link (147 of 174)
+[2023-02-12 22:00:53] Importing 53132531_0.trap.br for firmware.axf.link (148 of 174)
+[2023-02-12 22:00:53] Importing 64648775_0.trap.br for firmware.axf.link (149 of 174)
+[2023-02-12 22:00:53] Importing 50062063_0.trap.br for firmware.axf.link (150 of 174)
+[2023-02-12 22:00:53] Importing 22444928_0.trap.br for firmware.axf.link (151 of 174)
+[2023-02-12 22:00:53] Importing 7314160_0.trap.br for firmware.axf.link (152 of 174)
+[2023-02-12 22:00:53] Importing 353252_0.trap.br for firmware.axf.link (153 of 174)
+[2023-02-12 22:00:53] Importing 19002753_0.trap.br for firmware.axf.link (154 of 174)
+[2023-02-12 22:00:53] Importing 13897497_0.trap.br for firmware.axf.link (155 of 174)
+[2023-02-12 22:00:53] Importing 14740814_0.trap.br for firmware.axf.link (156 of 174)
+[2023-02-12 22:00:53] Importing 37905303_0.trap.br for firmware.axf.link (157 of 174)
+[2023-02-12 22:00:53] Importing 25630589_0.trap.br for firmware.axf.link (158 of 174)
+[2023-02-12 22:00:53] Importing 9699167_0.trap.br for firmware.axf.link (159 of 174)
+[2023-02-12 22:00:53] Importing 1094157_0.trap.br for firmware.axf.link (160 of 174)
+[2023-02-12 22:00:53] Importing 1486715_0.trap.br for firmware.axf.link (161 of 174)
+[2023-02-12 22:00:53] Importing 39553170_0.trap.br for firmware.axf.link (162 of 174)
+[2023-02-12 22:00:53] Importing 40126069_0.trap.br for firmware.axf.link (163 of 174)
+[2023-02-12 22:00:53] Importing 47513388_0.trap.br for firmware.axf.link (164 of 174)
+[2023-02-12 22:00:53] Importing 39301758_0.trap.br for firmware.axf.link (165 of 174)
+[2023-02-12 22:00:53] Importing 65707511_0.trap.br for firmware.axf.link (166 of 174)
+[2023-02-12 22:00:53] Importing 38907656_0.trap.br for firmware.axf.link (167 of 174)
+[2023-02-12 22:00:53] Importing 27371368_0.trap.br for firmware.axf.link (168 of 174)
+[2023-02-12 22:00:53] Importing 34447578_0.trap.br for firmware.axf.link (169 of 174)
+[2023-02-12 22:00:53] Importing 56209122_0.trap.br for firmware.axf.link (170 of 174)
+[2023-02-12 22:00:53] Importing 29746678_0.trap.br for firmware.axf.link (171 of 174)
+[2023-02-12 22:00:53] Importing 55940110_0.trap.br for firmware.axf.link (172 of 174)
+[2023-02-12 22:00:53] Importing firmware.axf.trap.br for firmware.axf.link (173 of 174)
+[2023-02-12 22:00:53] Importing sourceLocationPrefix.trap.gz for no link target (174 of 174)
+[2023-02-12 22:00:53] Merging 1 fragment for files.
+[2023-02-12 22:00:53] Merging 1 fragment for numlines.
+[2023-02-12 22:00:53] Merging 1 fragment for locations_default.
+[2023-02-12 22:00:53] Merging 1 fragment for preprocdirects.
+[2023-02-12 22:00:53] Merging 1 fragment for preproctext.
+[2023-02-12 22:00:53] Merging 1 fragment for preproctrue.
+[2023-02-12 22:00:53] Merging 1 fragment for comments.
+[2023-02-12 22:00:53] Merging 1 fragment for commentbinding.
+[2023-02-12 22:00:53] Merging 1 fragment for containerparent.
+[2023-02-12 22:00:53] Merging 1 fragment for folders.
+[2023-02-12 22:00:53] Merging 1 fragment for preprocpair.
+[2023-02-12 22:00:53] Merging 1 fragment for preprocfalse.
+[2023-02-12 22:00:53] Merging 1 fragment for type_mentions.
+[2023-02-12 22:00:53] Merging 1 fragment for functions.
+[2023-02-12 22:00:53] Merging 1 fragment for link_parent.
+[2023-02-12 22:00:53] Merging 1 fragment for function_return_type.
+[2023-02-12 22:00:53] Merging 1 fragment for params.
+[2023-02-12 22:00:53] Merging 1 fragment for fun_decls.
+[2023-02-12 22:00:53] Merging 1 fragment for fun_decl_specifiers.
+[2023-02-12 22:00:53] Merging 1 fragment for param_decl_bind.
+[2023-02-12 22:00:53] Merging 1 fragment for macroinvocations.
+[2023-02-12 22:00:53] Merging 1 fragment for macrolocationbind.
+[2023-02-12 22:00:53] Merging 1 fragment for derivedtypes.
+[2023-02-12 22:00:53] Merging 1 fragment for pointerishsize.
+[2023-02-12 22:00:53] Merging 1 fragment for unspecifiedtype.
+[2023-02-12 22:00:53] Merging 1 fragment for routinetypes.
+[2023-02-12 22:00:53] Merging 1 fragment for funspecifiers.
+[2023-02-12 22:00:53] Merging 1 fragment for var_decls.
+[2023-02-12 22:00:53] Merging 1 fragment for typespecifiers.
+[2023-02-12 22:00:53] Merging 1 fragment for fileannotations.
+[2023-02-12 22:00:53] Merging 1 fragment for includes.
+[2023-02-12 22:00:53] Merging 1 fragment for fun_def.
+[2023-02-12 22:00:53] Merging 1 fragment for var_def.
+[2023-02-12 22:00:53] Merging 1 fragment for locations_stmt.
+[2023-02-12 22:00:53] Merging 1 fragment for stmts.
+[2023-02-12 22:00:53] Merging 1 fragment for localvariables.
+[2023-02-12 22:00:53] Merging 1 fragment for stmt_decl_bind.
+[2023-02-12 22:00:53] Merging 1 fragment for stmt_decl_entry_bind.
+[2023-02-12 22:00:53] Merging 1 fragment for macro_argument_unexpanded.
+[2023-02-12 22:00:53] Merging 1 fragment for macro_argument_expanded.
+[2023-02-12 22:00:53] Merging 1 fragment for affectedbymacroexpansion.
+[2023-02-12 22:00:53] Merging 1 fragment for macroparent.
+[2023-02-12 22:00:53] Merging 1 fragment for locations_expr.
+[2023-02-12 22:00:53] Merging 1 fragment for exprs.
+[2023-02-12 22:00:53] Merging 1 fragment for expr_types.
+[2023-02-12 22:00:53] Merging 1 fragment for values.
+[2023-02-12 22:00:53] Merging 1 fragment for valuebind.
+[2023-02-12 22:00:53] Merging 1 fragment for inmacroexpansion.
+[2023-02-12 22:00:53] Merging 1 fragment for expr_isload.
+[2023-02-12 22:00:53] Merging 1 fragment for exprparents.
+[2023-02-12 22:00:53] Merging 1 fragment for valuetext.
+[2023-02-12 22:00:53] Merging 1 fragment for compgenerated.
+[2023-02-12 22:00:53] Merging 1 fragment for stmtparents.
+[2023-02-12 22:00:53] Merging 1 fragment for if_then.
+[2023-02-12 22:00:53] Merging 1 fragment for blockscope.
+[2023-02-12 22:00:53] Merging 1 fragment for function_entry_point.
+[2023-02-12 22:00:53] Merging 1 fragment for if_else.
+[2023-02-12 22:00:53] Merging 1 fragment for for_condition.
+[2023-02-12 22:00:53] Merging 1 fragment for for_body.
+[2023-02-12 22:00:53] Merging 1 fragment for for_initialization.
+[2023-02-12 22:00:53] Merging 1 fragment for for_update.
+[2023-02-12 22:00:53] Merging 1 fragment for arraysizes.
+[2023-02-12 22:00:53] Merging 1 fragment for while_body.
+[2023-02-12 22:00:53] Merging 1 fragment for varspecifiers.
+[2023-02-12 22:00:53] Merging 1 fragment for varbind.
+[2023-02-12 22:00:53] Merging 1 fragment for exprconv.
+[2023-02-12 22:00:53] Merging 1 fragment for conversionkinds.
+[2023-02-12 22:00:53] Merging 1 fragment for expr_cond_guard.
+[2023-02-12 22:00:53] Merging 1 fragment for expr_cond_true.
+[2023-02-12 22:00:53] Merging 1 fragment for expr_cond_false.
+[2023-02-12 22:00:53] Merging 1 fragment for routinetypeargs.
+[2023-02-12 22:00:53] Merging 1 fragment for funbind.
+[2023-02-12 22:00:53] Merging 1 fragment for globalvariables.
+[2023-02-12 22:00:53] Merging 1 fragment for var_decl_specifiers.
+[2023-02-12 22:00:53] Merging 1 fragment for iscall.
+[2023-02-12 22:00:53] Merging 1 fragment for mangled_name.
+[2023-02-12 22:00:53] Merging 1 fragment for expr_ancestor.
+[2023-02-12 22:00:53] Merging 1 fragment for usertypes.
+[2023-02-12 22:00:53] Merging 1 fragment for typedefbase.
+[2023-02-12 22:00:53] Merging 1 fragment for type_decls.
+[2023-02-12 22:00:53] Merging 1 fragment for type_decl_top.
+[2023-02-12 22:00:53] Merging 1 fragment for usertypesize.
+[2023-02-12 22:00:53] Merging 1 fragment for enumconstants.
+[2023-02-12 22:00:53] Merging 1 fragment for initialisers.
+[2023-02-12 22:00:53] Merging 1 fragment for type_def.
+[2023-02-12 22:00:53] Merging 1 fragment for is_pod_class.
+[2023-02-12 22:00:53] Merging 1 fragment for is_standard_layout_class.
+[2023-02-12 22:00:53] Merging 1 fragment for is_complete.
+[2023-02-12 22:00:53] Merging 1 fragment for member.
+[2023-02-12 22:00:53] Merging 1 fragment for membervariables.
+[2023-02-12 22:00:53] Merging 1 fragment for fieldoffsets.
+[2023-02-12 22:00:53] Merging 1 fragment for switch_body.
+[2023-02-12 22:00:53] Merging 1 fragment for switch_case.
+[2023-02-12 22:00:53] Merging 1 fragment for jumpinfo.
+[2023-02-12 22:00:53] Merging 1 fragment for aggregate_array_init.
+[2023-02-12 22:00:53] Merging 1 fragment for attributes.
+[2023-02-12 22:00:53] Merging 1 fragment for funcattributes.
+[2023-02-12 22:00:53] Merging 1 fragment for do_body.
+[2023-02-12 22:00:53] Merging 1 fragment for typeattributes.
+[2023-02-12 22:00:53] Merging 1 fragment for aggregate_field_init.
+[2023-02-12 22:00:53] Merging 1 fragment for attribute_arg_constant.
+[2023-02-12 22:00:53] Merging 1 fragment for attribute_args.
+[2023-02-12 22:00:53] Merging 1 fragment for varattributes.
+[2023-02-12 22:00:53] Merging 1 fragment for builtintypes.
+[2023-02-12 22:00:53] Merging 1 fragment for link_targets.
+[2023-02-12 22:00:53] Merging 1 fragment for namespaces.
+[2023-02-12 22:00:53] Merging 1 fragment for specialnamequalifyingelements.
+[2023-02-12 22:00:53] Merging 1 fragment for specifiers.
+[2023-02-12 22:00:53] Merging 1 fragment for compilations.
+[2023-02-12 22:00:53] Merging 1 fragment for compilation_args.
+[2023-02-12 22:00:53] Merging 1 fragment for compilation_compiling_files.
+[2023-02-12 22:00:53] Merging 1 fragment for compilation_time.
+[2023-02-12 22:00:53] Merging 1 fragment for compilation_finished.
+[2023-02-12 22:00:53] Merging 1 fragment for sourceLocationPrefix.
+[2023-02-12 22:00:53] Saving string and id pools to disk.
+[2023-02-12 22:00:53] Finished importing trap files.
+[2023-02-12 22:00:53] Pausing evaluation to close the cache at sequence stamp o+3
+[2023-02-12 22:00:53] The disk cache is freshly trimmed; leave it be.
+[2023-02-12 22:00:53] Unpausing evaluation
+[2023-02-12 22:00:53] Plumbing command codeql dataset import completed.
+[2023-02-12 22:00:53] [PROGRESS] database finalize> TRAP import complete (2.5s).
+[2023-02-12 22:00:53] Running plumbing command: codeql database cleanup --mode=normal -- /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB
+[2023-02-12 22:00:54] [PROGRESS] database cleanup> Cleaning up existing TRAP files after import...
+[2023-02-12 22:00:54] [PROGRESS] database cleanup> TRAP files cleaned up (5ms).
+[2023-02-12 22:00:54] [PROGRESS] database cleanup> Cleaning up scratch directory...
+[2023-02-12 22:00:54] [PROGRESS] database cleanup> Scratch directory cleaned up (4ms).
+[2023-02-12 22:00:54] Running plumbing command: codeql dataset cleanup --mode=normal -- /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp
+[2023-02-12 22:00:54] [PROGRESS] dataset cleanup> Cleaning up dataset in /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp.
+[2023-02-12 22:00:54] Trimming disk cache at /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp/default/cache in mode normal.
+[2023-02-12 22:00:54] Sequence stamp origin is -6354415908132997696
+[2023-02-12 22:00:54] Pausing evaluation to zealously trim disk at sequence stamp o+0
+[2023-02-12 22:00:54] Unpausing evaluation
+[2023-02-12 22:00:54] Trimming completed (0ms): Trimmed disposable data from cache.
+[2023-02-12 22:00:54] Pausing evaluation to close the cache at sequence stamp o+1
+[2023-02-12 22:00:54] The disk cache is freshly trimmed; leave it be.
+[2023-02-12 22:00:54] Unpausing evaluation
+[2023-02-12 22:00:54] [PROGRESS] dataset cleanup> Trimmed disposable data from cache.
+[2023-02-12 22:00:54] [PROGRESS] dataset cleanup> Finalizing dataset in /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp
+[2023-02-12 22:00:54] [DETAILS] dataset cleanup> Finished deleting ID pool from /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB/db-cpp (2ms).
+[2023-02-12 22:00:54] Plumbing command codeql dataset cleanup completed.
+[2023-02-12 22:00:54] Plumbing command codeql database cleanup completed with status 0.
+[2023-02-12 22:00:54] Plumbing command codeql database finalize completed.
+[2023-02-12 22:00:54] [PROGRESS] database create> Successfully created database at /home/frost/Documents/ectf_2023/qlSpace/2023-ectf-insecure-example/car/newCarDB.
+[2023-02-12 22:00:54] Terminating normally.
